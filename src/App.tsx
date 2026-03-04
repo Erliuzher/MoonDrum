@@ -17,9 +17,10 @@ export default function App() {
 
   // 1. 物理粒子背景 (带有鼠标避让效果)
   useEffect(() => {
-    const canvas = canvasRef.current as HTMLCanvasElement;
-    const ctx = canvas?.getContext("2d");
-    if (!ctx || !canvas) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
     let mouse = { x: -1000, y: -1000 };
 
     const init = () => {
