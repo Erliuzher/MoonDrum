@@ -17,7 +17,7 @@ export default function App() {
 
   // 1. 物理粒子背景 (带有鼠标避让效果)
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current as any;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
