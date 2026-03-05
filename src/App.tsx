@@ -19,8 +19,10 @@ export default function App() {
   useEffect(() => {
     const canvas = canvasRef.current as any;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
     let pts: any[] = [];
     let mouse = { x: -1000, y: -1000 };
 
