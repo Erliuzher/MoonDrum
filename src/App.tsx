@@ -16,32 +16,33 @@ export default function App() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   // 1. 物理粒子背景 (带有鼠标避让效果)
-  useEffect(() => {
-    const canvas = canvasRef.current as any;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let pts: any[] = [];
-    let mouse = { x: -1000, y: -1000 };
-
-    const init = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      pts = Array.from({ length: 1800 }, () => ({
-        u: Math.random() * Math.PI * 2,
-        v: Math.random() * Math.PI * 2,
-        r1: 180,
-        r2: 80,
-        ox: 0,
-        oy: 0,
-      }));
-    };
-
-    const draw = (time: any) => {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    useEffect(() => {
+      const canvas = canvasRef.current as any;
+      if (!canvas) return;
+  
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+  
+      let pts: any[] = []; 
+      let mouse = { x: -1000, y: -1000 };
+  
+      const init = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        pts = Array.from({ length: 1800 }, () => ({
+          u: Math.random() * Math.PI * 2,
+          v: Math.random() * Math.PI * 2,
+          r1: 180,
+          r2: 80,
+          ox: 0,
+          oy: 0,
+        }));
+      };
+  
+      const draw = (time: any) => { 
+        if (!ctx || !canvas) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
       const t = time * 0.0004;
       pts.forEach((p) => {
         let x3d = (p.r1 + p.r2 * Math.cos(p.u)) * Math.cos(p.v + t);
